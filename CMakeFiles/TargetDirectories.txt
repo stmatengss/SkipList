@@ -1,3 +1,0 @@
-/Users/stmatengss/Documents/test/SkipList/CMakeFiles/rebuild_cache.dir
-/Users/stmatengss/Documents/test/SkipList/CMakeFiles/edit_cache.dir
-/Users/stmatengss/Documents/test/SkipList/CMakeFiles/test.dir
