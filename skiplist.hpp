@@ -81,11 +81,15 @@ namespace SkipList {
 			}
 
 			if (node->next_list[0]->value == num) {
-				length --;
+				
 				SkipListNode *update[max_skiplist_level];
-				for (int i = 0; i < update; i ++ ) {
-					update[in] = ode->next_list[i];
+				for (int i = 0; i < node->level; i ++ ) {
+					update[i] = node->next_list[i];
 				}
+
+				
+
+				length --;
 				return true;
 			}
 
@@ -110,7 +114,7 @@ namespace SkipList {
 
 	private:
 
-		SkipListNode *node _search(double num) {
+		SkipListNode *_search(double num) {
 			SkipListNode *node = header;
 
 			for (int i = skiplist_level - 1; i >= 0; i -- ) {
