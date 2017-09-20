@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/stmatengss/Desktop/study/SkipList/SkipList-master/skiplist.hpp
+iostream
+-
+random
+-
+
+/home/stmatengss/Desktop/study/SkipList/SkipList-master/test.cpp
+iostream
+-
+skiplist.hpp
+/home/stmatengss/Desktop/study/SkipList/SkipList-master/skiplist.hpp
+
