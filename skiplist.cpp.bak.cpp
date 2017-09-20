@@ -9,22 +9,20 @@ namespace SkipList {
 
 	const static int max_skiplist_level = 16;
 
-	template <typename T>
 	struct SkipListNode {
-		T value;
+		double value;
 		int level;
 		SkipListNode *next_list[max_skiplist_level];
-		SkipListNode(): level(1) { }
-		SkipListNode(T value, int level):value(value), level(level) { } 
+		SkipListNode(): value(0.0), level(1) { }
+		SkipListNode(double value, int level):value(value), level(level) { } 
 	}; 
 
-	template <typename T>
 	class SkipList {
 
 	public:
 		// int max_skiplist_level; // Drop this.
 		std::random_device gen_random;
-		SkipListNode<T> *header;
+		SkipListNode *header;
 		// SkipListNode *tail; // Useless
 		int skiplist_level;
 		int length;
@@ -41,22 +39,22 @@ namespace SkipList {
 		}
 
 		void init() {
-			header = new SkipListNode<T>();
+			header = new SkipListNode();
 			header->level = 1;
 			for(auto &p: header->next_list) {
 				p = NULL;
 			}
 		}
 
-		bool insert(T num) {
-			SkipListNode<T> *node;
-			SkipListNode<T> *update[max_skiplist_level];
+		bool insert(double num) {
+			SkipListNode *node;
+			SkipListNode *update[max_skiplist_level];
 			
 			// Find matching position
 			node = _search(num, update);
 
 			int level = random_level();
-			SkipListNode<T> *new_node = new SkipListNode<T>(num, level);
+			SkipListNode *new_node = new SkipListNode(num, level);
 
 			if (level > skiplist_level) {
 				for (int i = skiplist_level; i < level; i ++ ) {
@@ -74,9 +72,9 @@ namespace SkipList {
 			return true;
 		}
 
-		bool drop(T num) {
-			SkipListNode<T> *node;
-			SkipListNode<T> *update[max_skiplist_level];
+		bool drop(double num) {
+			SkipListNode *node;
+			SkipListNode *update[max_skiplist_level];
 
 			node = _search(num, update);
 
@@ -86,7 +84,7 @@ namespace SkipList {
 
 			if (node->next_list[0]->value == num) {
 				
-				SkipListNode<T> *update[max_skiplist_level];
+				SkipListNode *update[max_skiplist_level];
 				for (int i = 0; i < node->level; i ++ ) {
 					update[i] = node->next_list[i];
 				}
@@ -106,7 +104,7 @@ namespace SkipList {
 		}
 
 		bool search(double num) {
-			SkipListNode<T> *node = _search(num);
+			SkipListNode *node = _search(num);
 
 			if (node == NULL || node->next_list[0] == NULL) {
 				return false;
@@ -123,8 +121,8 @@ namespace SkipList {
 
 	private:
 
-		SkipListNode<T> *_search(T num) {
-			SkipListNode<T> *node = header;
+		SkipListNode *_search(double num) {
+			SkipListNode *node = header;
 
 			for (int i = skiplist_level - 1; i >= 0; i -- ) {
 				while (node->next_list[i] && node->next_list[i]->value < num) {
@@ -135,8 +133,8 @@ namespace SkipList {
 			return node;
 		}
 
-		SkipListNode<T> *_search(T num, SkipListNode<T> **update) {
-			SkipListNode<T> *node = header;
+		SkipListNode *_search(double num, SkipListNode **update) {
+			SkipListNode *node = header;
 
 			for (int i = skiplist_level - 1; i >= 0; i -- ) {
 				while (node->next_list[i] && node->next_list[i]->value < num) {
@@ -158,9 +156,9 @@ namespace SkipList {
 
 		void _print() {
 			for (int i = 0; i < skiplist_level; i ++ ) {
-				SkipListNode<T> *tmp = header->next_list[i];
+				SkipListNode *tmp = header->next_list[i];
 				while(tmp) {
-					std::cout << tmp->value << " ";
+					printf("%.2lf ", tmp->value);
 					tmp = tmp->next_list[i];
 				}
 				printf("\n");

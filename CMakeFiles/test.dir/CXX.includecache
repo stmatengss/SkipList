@@ -1,4 +1,4 @@
-#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
 
 #IncludeRegexScan: ^.*$
 
@@ -6,15 +6,15 @@
 
 #IncludeRegexTransform: 
 
-/home/stmatengss/Desktop/study/SkipList/SkipList-master/skiplist.hpp
+/Users/stmatengss/Documents/test/SkipList/skiplist.hpp
 iostream
 -
 random
 -
 
-/home/stmatengss/Desktop/study/SkipList/SkipList-master/test.cpp
+/Users/stmatengss/Documents/test/SkipList/test.cpp
 iostream
 -
 skiplist.hpp
-/home/stmatengss/Desktop/study/SkipList/SkipList-master/skiplist.hpp
+/Users/stmatengss/Documents/test/SkipList/skiplist.hpp
 
